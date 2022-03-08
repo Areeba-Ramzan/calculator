@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+    <title>A simple calculator</title>  
+    <link rel="stylesheet" href="./calculator.css">
+</head>
+<body>
+    <div id="container">
+      <div id="calculator">
+       <div id="result">
+           <!-- <input type="text"> -->
+           <h1 id="input"></h1>
+       </div>
+       <div id="keyboard">
+           <button  onclick="clc('AC')"  class="operator" >Clear</button>
+           <button  onclick="clc('CE')" class="operator" >CE</button>
+           <button  onclick="clc('%')" class="operator" >%</button>
+           <button  onclick="clc('/')" class="operator" id="/">&#247;</button>
+
+           <button  onclick="clc('7')" class="number">7</button>
+           <button  onclick="clc('8')" class="number">8</button>
+           <button  onclick="clc('9')" class="number">9</button>
+           <button  onclick="clc('*')" class="operator" id="*">&times;</button>
+           <button  onclick="clc('4')" class="number">4</button>
+           <button  onclick="clc('5')" class="number">5</button>
+           <button  onclick="clc('6')" class="number">6</button>
+           <button  onclick="clc('-')" class="operator">-</button>
+           <button  onclick="clc('1')" class="number">1</button>
+           <button  onclick="clc('2')" class="number">2</button>
+           <button  onclick="clc('3')" class="number">3</button>
+           <button  onclick="clc('+')" class="operator">+</button>
+           <button   class="empty"></button>
+           <button  onclick="clc('0')" class="number">0</button>
+           <button class="empty"></button>
+           <button onclick="clc('=')" class="operator">=</button>
+
+
+           
+       </div>
+      </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.2.0/math.min.js"></script>
+<script>
+//     let input=document.getElementsByTagName("input")[0]
+//   function getvalues(e){
+//       input.value+=e.target.innerText
+//   }
+//   function ans(){
+//       let v=input.value
+//       math.evaluate(v)
+//   }
+//   function del(){
+//       input.value=""
+//   }
+
+  function clc(data) {
+        // input.innerHTML += e.target.textContent
+    //    console.log(data);
+        switch (data) {
+            case "AC":
+                input.innerHTML = ""
+                // input.innerHTML = "0"
+                break;
+
+            case "CE":
+                input.innerHTML = input.innerHTML.substr(0, input.innerHTML.length - 1);
+                // input.innerHTML  = math.evaluate(input.innerHTML) == undefined ? 0:math.evaluate(input.innerHTML)
+                input.innerHTML = math.evaluate(input.innerHTML)
+                if (input.innerHTML == "undefined") {
+                    input.innerHTML = " "
+                }
+                break;
+
+            case "=":
+                input.innerHTML =math.evaluate(input.innerHTML).toFixed(2)
+                if (input.innerHTML == "undefined" || input.innerHTML == "=undefined") {
+                    input.innerHTML = " "
+                }
+
+                break;
+            default:
+                input.innerHTML += data;
+
+        }
+
+
+    }
+  
+</script>
+
+</html>
+
